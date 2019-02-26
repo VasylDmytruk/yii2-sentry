@@ -41,6 +41,7 @@ In your application config add:
         'sentry' => [
             'class' => \autoxloo\yii2\sentry\SentryComponent::class,
             'ravenDsn' => 'https://0000000000000000000@sentry.io/000000',          // Your sentry dsn
+            'allowCaptureMessage' => true,
         ],
 ],
 ```
@@ -53,5 +54,13 @@ Once the extension is installed, simply use it in your code by:
 ```php
 \Yii::$app->sentry->getRavenClient()->captureMessage('some message');
 ```
+
+or
+
+```php
+\Yii::$app->sentry->captureMessage('some message');
+```
+
+> Note: In last example captures message only if `allowCaptureMessage` is `true`.
 
 See sentry docs for more details [https://docs.sentry.io/clients/php/](https://docs.sentry.io/clients/php/)
